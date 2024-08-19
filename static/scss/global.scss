@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin list {
+  padding-left: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ul[role="list"] {
+  @include list;
+
+  list-style: square;
+}
+
+ol[role="list"] {
+  @include list;
+
+  list-style: decimal;
+}
+
+body,
+html {
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition: none 0.01ms !important;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  button {
+    width: fit-content;
+    padding: 0.5rem;
+  }
+}
