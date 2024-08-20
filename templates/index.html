@@ -11,20 +11,32 @@
       rel="stylesheet"
       type="text/css"
     />
-    <title>Document</title>
+
+    <title>ToDo List</title>
   </head>
 
   <body>
-    <h1>{{ title }}</h1>
+    <h1 class="heading">TODO LIST</h1>
 
-    <ul role="list">
+    <div class="todo-list">
       {% for item in list %}
-      <li>{{item}}</li>
+      <div>
+        <h2>{{ item.title }}</h2>
+        <pre>{{ item.details }}</pre>
+        <p>{{ item.date }}</p>
+        <form action="/del/{{item.id}}" method="POST" class="button-delete">
+          {% csrf_token %}
+          <button value="remove" type="submit">
+            <span class="glyphicon glyphicon-trash">remove</span>
+          </button>
+        </form>
+      </div>
       {% endfor %}
-    </ul>
+    </div>
 
     <form method="POST" class="form">
-      {% csrf_token %} {{forms}}
+      {% csrf_token %} {{ forms }}
+
       <button type="submit">Submit</button>
     </form>
   </body>
